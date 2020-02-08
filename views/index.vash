@@ -1,0 +1,7 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) {
+    @model.posts.forEach(function(item){
+      <h1>@item.title</h1>
+    })
+  })
+})

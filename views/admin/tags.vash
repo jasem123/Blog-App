@@ -1,0 +1,49 @@
+@html.extend('layout' , function(){
+    @html.block('content' , function(){
+            <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2>
+                            Tags
+
+                            <a href="/tags/create" class="btn btn-default pull-right">Create New</a>
+                        </h2>
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @model.tags.forEach(function(item){
+                                 <tr>
+                                    <td>@item.name</td>
+                                    <td>
+                                        <a href="/tags/edit/@item.id" class="btn btn-xs btn-info">Edit</a>
+                                        <a href="/tags/delete/@item.id"  class="btn btn-xs btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            })
+                               
+                               
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    })
+})
+ 

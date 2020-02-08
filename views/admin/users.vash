@@ -1,0 +1,54 @@
+@html.extend('layout' , function(){
+    @html.block('content' , function(){
+ 
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2>
+                            Users
+                        </h2>
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Admin?</th>
+                                    <th>No of Posts</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @model.users.forEach(function(item){
+                                <tr>
+                                    <td>@item.firstname @item.lastname</td>
+                                    <td>admin@admin.ps</td>
+                                    <td>Yes</td>
+                                    <td>3</td>
+                                    <td>
+                                        <a href="" data-method="DELETE" data-token="32Mxrb2s2QPyv3C1h4iYcbfZBT7PmU7Tfm9koxkk"
+                                            data-confirm="Are you sure?" class="btn btn-xs btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                })
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+   })
+})
