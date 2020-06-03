@@ -29,8 +29,7 @@ app.use(function(req , res , next) {
 });
 
 
-app.use('/', indexRouter);
-app.use(function(req ,res , next) {
+var admin = function(req ,res , next) {
   if (req.session.user) {
     if (req.session.user.isAdmin) {
       next();
@@ -40,12 +39,15 @@ app.use(function(req ,res , next) {
   } else {
     res.redirect('/')
   }
-})
-app.use('/users', usersRouter);
+}
+
+app.use('/', indexRouter);
+// app.use()
+app.use('/users', admin , usersRouter);
 app.use('/posts' , postsRouter);
-app.use('/tags' , tagsRouter);
-app.use('/comments' , commentsRouter);
-app.use('/categories' , categoriesRouter);
+app.use('/tags' , admin , tagsRouter);
+app.use('/comments' ,admin ,  commentsRouter);
+app.use('/categories' , admin , categoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
